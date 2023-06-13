@@ -3,7 +3,13 @@ SQLyog Ultimate v12.5.1 (64 bit)
 MySQL - 10.1.21-MariaDB : Database - bdl_mk
 *********************************************************************
 */
-
+SELECT tb_mhs.nama_mhs, tb_mk.nama_mk, tb_nilai.nilai
+FROM tb_nilai JOIN tb_mhs
+	ON tb_nilai.nim=tb_mhs.nim
+	JOIN tb_mk
+		ON tb_nilai.kode_mk=tb_mk.kode_mk
+WHERE tb_nilai.nilai= (SELECT MAX(nilai) FROM 
+tb_nilai WHERE kode_mk =     'mk303'    )     AND tb_nilai .kode_mk    =    'mk303'
 /*!40101 SET NAMES utf8 */;
 
 /*!40101 SET SQL_MODE=''*/;
