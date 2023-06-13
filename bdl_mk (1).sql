@@ -3,6 +3,16 @@ SQLyog Ultimate v12.5.1 (64 bit)
 MySQL - 10.1.21-MariaDB : Database - bdl_mk
 *********************************************************************
 */
+SELECT last_name, job_id FROM employees
+WHERE salary = (SELECT MIN(salary) FROM employees)
+
+SELECT * FROM employees
+WHERE job_id =(SELECT job_id FROM employees WHERE employee_id = '7566')
+AND salary> (SELECT salary FROM employees WHERE employee_id ='7521')
+
+SELECT job_id, MIN(salary) FROM employees
+GROUP BY job_id HAVING MIN(salary)> (SELECT MIN(salary) FROM employees WHERE job_id='ad_vp')
+
 SELECT tb_mhs.nama_mhs, tb_mk.nama_mk, tb_nilai.nilai
 FROM tb_nilai JOIN tb_mhs
 	ON tb_nilai.nim=tb_mhs.nim
